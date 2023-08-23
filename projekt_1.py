@@ -108,24 +108,6 @@ if user in user_list and passw in passw_list:
             pocet += 1    
                 
                
-       
-        
-
-            
-            
-            
-        
-
-
-
-
-
-        
-
-        
-
-                   
-        
 
 else:
     print("unregistered user, terminating the program..")
