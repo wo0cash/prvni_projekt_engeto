@@ -98,7 +98,7 @@ if user in user_list and passw in passw_list:
         len_list = []
         for word in text_list:
             if word in text_list:
-            len_list.append(len(word))
+                len_list.append(len(word))
         len_list.sort()    
         pocet = 0
 
@@ -107,7 +107,5 @@ if user in user_list and passw in passw_list:
                 print(pocet + 1, "|", "*" * (len_list.count(pocet + 1) + 1), "|", len_list.count(pocet + 1))
             pocet += 1    
                 
-               
-
 else:
     print("unregistered user, terminating the program..")
