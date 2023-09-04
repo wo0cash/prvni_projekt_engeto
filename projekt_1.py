@@ -91,7 +91,7 @@ if user in user_list and passw in passw_list:
         print("The sum of all the numbers is", x_sum) if x_sum > 0 else print("There are no numbers") #ternární operátor pro jednoduchost
         print(sep_line)
         #graf na četnost různých delek slov v textu
-        print("LEN |   OCCURENCES   | NR.")
+        print(f"{'LEN': >3}|{'OCCURENCES': ^15}|{'NR.': <3}")
         print(sep_line)
         len_list = []
         for word in text_list:
@@ -103,10 +103,12 @@ if user in user_list and passw in passw_list:
                 len_list.append(len(word))
         len_list.sort()    
         pocet = 0
+        star = "*"
 
         for lenword in len_list:
             if pocet + 1 in len_list:
-                print(pocet + 1, "|", "*" * (len_list.count(pocet + 1)), "|", len_list.count(pocet + 1))
+                #print(pocet + 1, "|", "*" * (len_list.count(pocet + 1)), "|", len_list.count(pocet + 1))
+                print(f"{pocet + 1: >3}|{(len_list.count(pocet + 1)) * star: <15}|{len_list.count(pocet + 1):<3}")
             pocet += 1    
                 
 else:
