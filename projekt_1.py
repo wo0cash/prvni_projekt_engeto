@@ -40,8 +40,8 @@ user = "bob" #input("Zadej přihlašovací jméno: ")
 passw = "123" #input("Zadej heslo: ")
 print(sep_line)
 
-#smyčka - kontrola údajů která nás pustí dál
-#!!! upravit jméno a heslo musí patřit k sobě
+#podmínka - kontrola údajů která nás pustí dál
+
 if user in user_list and passw in passw_list:
     print("Welcome to the app,", user.capitalize(), "\nWe have 3 texts to be analyzed.")   
     print(sep_line)
@@ -91,20 +91,22 @@ if user in user_list and passw in passw_list:
         print("The sum of all the numbers is", x_sum) if x_sum > 0 else print("There are no numbers") #ternární operátor pro jednoduchost
         print(sep_line)
         #graf na četnost různých delek slov v textu
-        #TODO spočítat stejně dlouhá písma
-        #TODO asi while? tzn.-> smyčka kdy bude vyhledávat prvně slova s jedním znakem a sečte je pak se vráti a bude sčítat slova o dvou znacích
-        print("LEN | OCCURENCES | NR.")
+        print("LEN |   OCCURENCES   | NR.")
         print(sep_line)
         len_list = []
         for word in text_list:
-            if word in text_list:
+            if word.endswith("."):
+                len_list.append(len(word) - 1)
+            elif word.endswith(","):
+                len_list.append(len(word) - 1)
+            elif word in text_list:
                 len_list.append(len(word))
         len_list.sort()    
         pocet = 0
 
         for lenword in len_list:
             if pocet + 1 in len_list:
-                print(pocet + 1, "|", "*" * (len_list.count(pocet + 1) + 1), "|", len_list.count(pocet + 1))
+                print(pocet + 1, "|", "*" * (len_list.count(pocet + 1)), "|", len_list.count(pocet + 1))
             pocet += 1    
                 
 else:
