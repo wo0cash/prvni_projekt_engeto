@@ -96,12 +96,12 @@ if user in user_list and passw in passw_list:
         len_list = []
         #zkus zjednodušit
         for word in text_list:
-            if word.endswith("."):
+            if word.endswith(".") or word.endswith(","):
                 len_list.append(len(word) - 1)
-            elif word.endswith(","):
-                len_list.append(len(word) - 1)
-            elif word in text_list:
+            else:
                 len_list.append(len(word))
+            #elif word in text_list:
+            #    len_list.append(len(word))
         len_list.sort()    
         pocet = 0
         star = "*"
