@@ -54,41 +54,35 @@ if user in user_list and passw in passw_list:
     else:
         ch_text = texts[int(text_number) - 1]
         text_list = ch_text.split() #vytvoří seznam
-        #print(text_list) - jenom ať vím že utvořil list
-        x_words = 0 
-        #Počet slov
-        for word in text_list:  #pro každé slovo spočítej slovo = slovo + 1
-            x_words += 1
-        print("There are", x_words, "words in selected text.")
-        #Počet slov začínajících velkým písmenem
+        #pomocné proměnné
+        x_words = 0
         x_title = 0
-        for title_word in text_list:
-            if title_word.istitle():
-                x_title += 1
-        print("There is", x_title, "titlecase word.") if x_title == 1 else print("There are", x_title, "titlecase words.") #ternární operátor pro jednoduchost
-        #Počet slov kapitálkami
         x_up = 0
-        for up_word in text_list:
-            if up_word.isupper() and up_word.isalpha():
-                x_up += 1
-        print("There is", x_up, "uppercase word.") if x_up == 1 else print("There are", x_up, "uppercase words.") #ternární operátor pro jednoduchost
-        #Počet slov z malého písmena
         x_low = 0
-        for low_word in text_list:
-            if low_word.islower():
-                x_low += 1
-        print("There is", x_low, "lowercase word.") if x_low == 1 else print("There are", x_low, "lowercase words.") #ternární operátor pro jednoduchost
-        #Počet numerických hodnot
-        #spočítat všechny čísla v textu
         x_num = 0
         x_sum = 0
-        for number in text_list:
-            if number.isdigit():
+        for word in text_list:
+            x_words += 1
+            #Počet slov začínajících velkým písmenem
+            if word.istitle():
+                x_title += 1
+            #Počet slov kapitálkami
+            if word.isupper() and word.isalpha():
+                x_up += 1
+            #Počet slov z malého písmena
+            if word.islower():
+                x_low += 1
+            #Počet numerických hodnot
+            #spočítat všechny čísla v textu
+            if word.isdigit():
                 x_num += 1
-                x_sum += int(number)  
-        
-        print("There is", x_num, "numeric string") if x_num == 1 else print("There are", x_num, "numeric strings.") #ternární operátor pro jednoduchost
-        print("The sum of all the numbers is", x_sum) if x_sum > 0 else print("There are no numbers") #ternární operátor pro jednoduchost
+                x_sum += int(word)
+        print("There are", x_words, "words in selected text.")
+        print("There is", x_title, "titlecase word.") if x_title == 1 else print("There are", x_title, "titlecase words.") #ternární operátor pro jednoduchost
+        print("There is", x_up, "uppercase word.") if x_up == 1 else print("There are", x_up, "uppercase words.") 
+        print("There is", x_low, "lowercase word.") if x_low == 1 else print("There are", x_low, "lowercase words.") 
+        print("There is", x_num, "numeric string") if x_num == 1 else print("There are", x_num, "numeric strings.") 
+        print("The sum of all the numbers is", x_sum) if x_sum > 0 else print("There are no numbers") 
         print(sep_line)
         #graf na četnost různých delek slov v textu
         print(f"{'LEN': >3}|{'OCCURENCES': ^18}|{'NR.': <3}")
