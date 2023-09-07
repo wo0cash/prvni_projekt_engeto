@@ -36,13 +36,11 @@ user_list = ["bob", "ann", "mike", "liz"]
 passw_list = ["123", "pass123", "password123", "pass123"]
 sep_line = "-" * 40
 
-user = "bob" #input("Zadej přihlašovací jméno: ")
-passw = "123" #input("Zadej heslo: ")
+user = input("Zadej přihlašovací jméno: ")
+passw = input("Zadej heslo: ")
 print(sep_line)
 
-#podmínka - kontrola údajů která nás pustí dál
-
-if user in user_list and passw in passw_list:
+if user in user_list and passw in passw_list:   #podmínka - kontrola údajů která nás pustí dál
     print("Welcome to the app,", user.capitalize(), "\nWe have 3 texts to be analyzed.")   
     print(sep_line)
     text_number = input("Enter a number btw. 1 and 3 to select: ") #vložení čísla textu
@@ -62,49 +60,40 @@ if user in user_list and passw in passw_list:
         x_num = 0
         x_sum = 0
         for word in text_list:
-            x_words += 1
-            #Počet slov začínajících velkým písmenem
-            if word.istitle():
+            x_words += 1        #Počet slov
+            if word.istitle():  #Počet slov začínajících velkým písmenem
                 x_title += 1
-            #Počet slov kapitálkami
-            if word.isupper() and word.isalpha():
+            if word.isupper() and word.isalpha():   #Počet slov kapitálkami
                 x_up += 1
-            #Počet slov z malého písmena
-            if word.islower():
+            if word.islower():  #Počet slov z malého písmena
                 x_low += 1
-            #Počet numerických hodnot
-            #spočítat všechny čísla v textu
-            if word.isdigit():
+            if word.isdigit():  #Počet numerických hodnot
                 x_num += 1
-                x_sum += int(word)
+                x_sum += int(word)  #spočítat všechny čísla v textu
         print("There are", x_words, "words in selected text.")
-        print("There is", x_title, "titlecase word.") if x_title == 1 else print("There are", x_title, "titlecase words.") #ternární operátor pro jednoduchost
-        print("There is", x_up, "uppercase word.") if x_up == 1 else print("There are", x_up, "uppercase words.") 
-        print("There is", x_low, "lowercase word.") if x_low == 1 else print("There are", x_low, "lowercase words.") 
+        print("There is", x_title, "titlecase word.") if x_title == 1 else print("There are", x_title, "titlecase words.")  #jednoduchá podmínka  
+        print("There is", x_up, "uppercase word.") if x_up == 1 else print("There are", x_up, "uppercase words.")           #pro úpravu textu
+        print("There is", x_low, "lowercase word.") if x_low == 1 else print("There are", x_low, "lowercase words.")        #v případě 1 nebo 0 slov
         print("There is", x_num, "numeric string") if x_num == 1 else print("There are", x_num, "numeric strings.") 
         print("The sum of all the numbers is", x_sum) if x_sum > 0 else print("There are no numbers") 
         print(sep_line)
-        #graf na četnost různých delek slov v textu
+
+        #četnost různých delek slov v textu
         print(f"{'LEN': >3}|{'OCCURENCES': ^18}|{'NR.': <3}")
         print(sep_line)
         len_list = []
-        #zkus zjednodušit
         for word in text_list:
             if word.endswith(".") or word.endswith(","):
                 len_list.append(len(word) - 1)
             else:
                 len_list.append(len(word))
-            #elif word in text_list:
-            #    len_list.append(len(word))
         len_list.sort()    
         pocet = 0
         star = "*"
-
+        #vykreslení grafu
         for lenword in len_list:
             if pocet + 1 in len_list:
-                #print(pocet + 1, "|", "*" * (len_list.count(pocet + 1)), "|", len_list.count(pocet + 1))
                 print(f"{pocet + 1: >3}|{(len_list.count(pocet + 1)) * star: <18}|{len_list.count(pocet + 1):<3}")
             pocet += 1    
-                
 else:
     print("unregistered user, terminating the program..")
