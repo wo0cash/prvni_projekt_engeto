@@ -35,12 +35,12 @@ garpike and stingray are also present.'''
 user_list = ["bob", "ann", "mike", "liz"]
 passw_list = ["123", "pass123", "password123", "pass123"]
 sep_line = "-" * 40
-
+user_pass_dict = dict(zip(user_list, passw_list))
 user = input("Zadej přihlašovací jméno: ")
 passw = input("Zadej heslo: ")
 print(sep_line)
 
-if user in user_list and passw in passw_list:   #podmínka - kontrola údajů která nás pustí dál
+if user in user_pass_dict.keys() and passw == user_pass_dict.get(user): #upravená podmínka kde je password přiřazený k useru
     print("Welcome to the app,", user.capitalize(), "\nWe have 3 texts to be analyzed.")   
     print(sep_line)
     text_number = input("Enter a number btw. 1 and 3 to select: ") #vložení čísla textu
